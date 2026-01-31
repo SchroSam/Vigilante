@@ -86,6 +86,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DebugKill",
+                    "type": "Button",
+                    "id": "7a5a40ac-5303-420d-8f06-5b3277644b0e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeLockon",
+                    "type": "Button",
+                    "id": "a5eff03b-b326-4ec7-92c4-982f0af70c7f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -328,6 +346,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "DebugReset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3dc502c2-dcbf-436a-ba61-ae50a5f29f0d",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugKill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3c2473c-4ef2-456b-978c-c29c42650fc8",
+                    "path": "<Keyboard>/semicolon",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeLockon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
