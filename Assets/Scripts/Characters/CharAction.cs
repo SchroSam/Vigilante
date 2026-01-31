@@ -10,7 +10,7 @@ public class CharAction : MonoBehaviour
         return "";
     }
 
-    public virtual void Enter() { }
+    public virtual void Enter(InputPackage input) { }
     public virtual void Exit() { }
     public virtual void Process(InputPackage input) { }
 }

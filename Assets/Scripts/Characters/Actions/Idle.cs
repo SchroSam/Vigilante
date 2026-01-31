@@ -8,7 +8,7 @@ public class IdleCharAction : CharAction
         return "";
     }
 
-    public override void Enter() { }
+    public override void Enter(InputPackage input) { }
     public override void Exit() { }
 
     public override void Process(InputPackage input) {

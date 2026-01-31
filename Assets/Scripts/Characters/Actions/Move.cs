@@ -8,7 +8,7 @@ public class Move : CharAction
         return "";
     }
 
-    public override void Enter()
+    public override void Enter(InputPackage input)
     {
         animator.SetBool("move", true);
 

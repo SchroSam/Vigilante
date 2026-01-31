@@ -25,7 +25,7 @@ public class CharacterBehavior : MonoBehaviour
             c.controller = controller;
             c.animator = animator;
         }
-        SwitchAction(defaultAct);
+        SwitchAction(defaultAct, new InputPackage());
         health = maxHealth;
     }
 
@@ -60,16 +60,16 @@ public class CharacterBehavior : MonoBehaviour
             if (!found) { print("Unknown character action " + nextAct + " requested"); }
             else
             {
-                SwitchAction(next);
+                SwitchAction(next, input);
             }
         }
         curAct.Process(input);
     }
 
-    void SwitchAction(CharAction nextAct)
+    void SwitchAction(CharAction nextAct, InputPackage input)
     {
         if (curAct) curAct.Exit();
         curAct = nextAct;
-        curAct.Enter();
+        curAct.Enter(input);
     }
 }

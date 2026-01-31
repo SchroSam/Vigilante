@@ -8,9 +8,11 @@ public class Block : CharAction
         return "";
     }
 
-    public override void Enter()
+    public override void Enter(InputPackage input)
     {
         animator.SetBool("block", true);
+        animator.SetFloat("strikeV", input.strikedir.y);
+        animator.SetFloat("strikeH", input.strikedir.x);
 
     }
     public override void Exit() {
@@ -19,8 +21,6 @@ public class Block : CharAction
 
     public override void Process(InputPackage input)
     {
-        animator.SetFloat("strikeV", input.strikedir.y);
-        animator.SetFloat("strikeH", input.strikedir.x);
         //print(input.movedir);
     }
 }

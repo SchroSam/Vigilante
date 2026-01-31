@@ -7,7 +7,7 @@ public class Die : CharAction
         return "Idle";
     }
 
-    public override void Enter()
+    public override void Enter(InputPackage input)
     {
         animator.SetTrigger("die");
     }

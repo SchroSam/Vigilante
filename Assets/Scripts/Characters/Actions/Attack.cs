@@ -8,9 +8,11 @@ public class Attack : CharAction
         return "";
     }
 
-    public override void Enter()
+    public override void Enter(InputPackage input)
     {
         animator.SetBool("attack", true);
+        animator.SetFloat("strikeV", input.strikedir.y);
+        animator.SetFloat("strikeH", input.strikedir.x);
 
     }
     public override void Exit()
@@ -20,8 +22,6 @@ public class Attack : CharAction
 
     public override void Process(InputPackage input)
     {
-        animator.SetFloat("strikeV", input.strikedir.y);
-        animator.SetFloat("strikeH", input.strikedir.x);
         //print(input.movedir);
     }
 }
