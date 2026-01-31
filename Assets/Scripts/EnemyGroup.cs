@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class EnemyGroup : MonoBehaviour
 {
-    public Transform[] enemies;
+    public CharacterBehavior[] enemies;
 
     void Start()
     {
-        enemies = GetComponentsInChildren<Transform>();
+        enemies = GetComponentsInChildren<CharacterBehavior>();
         EnterCombat();
     }
 
     public void EnterCombat()
     {
-        foreach (Transform e in enemies)
+        foreach (CharacterBehavior e in enemies)
         {
-            if (e != transform) CameraBehavior.lockables.Add(e);
+            CameraBehavior.lockables.Add(e.transform);
         }
     }
 }

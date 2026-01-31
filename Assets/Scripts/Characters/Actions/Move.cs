@@ -21,7 +21,6 @@ public class Move : CharAction
     }
 
     public override void Process(InputPackage input) {
-        //print(input.movedir);
         controller.Move(((transform.forward * input.movedir.y) + (transform.right * input.movedir.x)) * speed * Time.fixedDeltaTime);
         animator.SetFloat("moveV", input.movedir.y);
         animator.SetFloat("moveH", input.movedir.x);
