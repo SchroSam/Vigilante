@@ -55,6 +55,7 @@ public class CameraBehavior : MonoBehaviour
 
     public static void RemoveFromLockables(Transform t)
     {
+        if (!lockables.Contains(t)) return;
         bool refresh = lockables[iter] == t;
         lockables.Remove(t);
         if (refresh)
