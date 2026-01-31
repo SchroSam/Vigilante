@@ -14,16 +14,19 @@ public class Nav : MonoBehaviour
     {
         behavior = GetComponent<CharacterBehavior>();
         m_Agent = GetComponent<NavMeshAgent>();
+        m_Agent.isStopped = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         //Debug.Log($"x:{m_Agent.steeringTarget.x} z:{m_Agent.steeringTarget.z}");
-        movDir3 = (target.transform.position - transform.position).normalized;
+        movDir3 = (m_Agent.steeringTarget - transform.position).normalized;
 
         nextInput.movedir.x = movDir3.x;
-        nextInput.movedir.y = movDir3.y;
+        nextInput.movedir.y = movDir3.z;
+
+        nextInput.action = "Move";
 
         behavior.Process(nextInput);
 
