@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class IdleAction : CharAction
+public class Move : CharAction
 {
     public override string GetNextAction(InputPackage input)
     {
-        if (input.action == "Move") return input.action;
+        if (input.action != "Move") return input.action;
         return "";
     }
 
