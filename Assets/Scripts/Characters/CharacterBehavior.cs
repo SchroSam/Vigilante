@@ -17,7 +17,6 @@ public class CharacterBehavior : MonoBehaviour
     int health;
 
     public bool blocking;
-    public bool attacking;
     public Vector2Int dir;
     public List<Collider> objectsHit = new List<Collider>();
 
