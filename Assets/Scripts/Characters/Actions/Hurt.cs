@@ -4,7 +4,11 @@ public class Hurt : CharAction
 {
     public override string GetNextAction(InputPackage input)
     {
-        return "Idle";
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
+        {
+            return input.action;
+        }
+        return "";
     }
 
     public override void Enter(InputPackage input) {
