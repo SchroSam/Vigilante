@@ -62,12 +62,16 @@ public class Nav : MonoBehaviour
 
         else if(state == E_State.Waiting)
         {
-            //add propper waiting behavior
-
-            
-
-            nextInput.action = "Idle";
-            behavior.Process(nextInput);
+            if(Vector3.Distance(player.transform.position, transform.position) > attackRange)
+            {
+                nextInput.action = "Idle";
+                behavior.Process(nextInput);
+            }
+            else
+            {
+                transform.LookAt(player.transform.position);
+                swing();
+            }
 
         }
 
@@ -95,39 +99,7 @@ public class Nav : MonoBehaviour
 
             else if(Vector3.Distance(transform.position, player.transform.position) <= attackRange && !striking)
             {
-                striking = true;
-
-                nextInput.movedir = Vector2.zero;
-                nextInput.action = "Attack";
-
-                int attackType = Random.Range(0, 4);
-
-                switch (attackType)
-                {
-                    case 0:
-                        nextInput.strikedir = Vector2Int.left;
-
-                    break;
-
-                    case 1:
-                        nextInput.strikedir = Vector2Int.right;
-
-                    break;
-
-                    case 2:
-                        nextInput.strikedir = Vector2Int.up;
-
-                    break;
-
-                    case 3:
-                        nextInput.strikedir = Vector2Int.down;
-
-                    break;
-                }
-
-                behavior.Process(nextInput);
-                
-                
+                swing();   
             }
 
             // else if (striking)
@@ -139,6 +111,41 @@ public class Nav : MonoBehaviour
 
 
         }
+    }
+
+    public void swing()
+    {
+        striking = true;
+
+        nextInput.movedir = Vector2.zero;
+        nextInput.action = "Attack";
+
+        int attackType = Random.Range(0, 4);
+
+        switch (attackType)
+        {
+            case 0:
+                nextInput.strikedir = Vector2Int.left;
+
+            break;
+
+            case 1:
+                nextInput.strikedir = Vector2Int.right;
+
+            break;
+
+            case 2:
+                nextInput.strikedir = Vector2Int.up;
+
+            break;
+
+            case 3:
+                nextInput.strikedir = Vector2Int.down;
+
+            break;
+        }
+
+        behavior.Process(nextInput);
     }
 
     public void chanceToBlock()
