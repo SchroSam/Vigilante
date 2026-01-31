@@ -57,39 +57,7 @@ BlendTree:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Blend Tree
-  m_Childs:
-  - serializedVersion: 2
-    m_Motion: {fileID: -9021793991225143758, guid: 789495f193cb4793382151b2702a088a, type: 3}
-    m_Threshold: 0
-    m_Position: {x: 1, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: moveH
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: -7342239243898120005, guid: 789495f193cb4793382151b2702a088a, type: 3}
-    m_Threshold: 0.33333334
-    m_Position: {x: 0, y: 1}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: moveH
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: -3115669507061637269, guid: 789495f193cb4793382151b2702a088a, type: 3}
-    m_Threshold: 0.6666667
-    m_Position: {x: -1, y: 0}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: moveH
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: -370596149276530123, guid: 789495f193cb4793382151b2702a088a, type: 3}
-    m_Threshold: 1
-    m_Position: {x: 0, y: -1}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: moveH
-    m_Mirror: 0
+  m_Childs: []
   m_BlendParameter: strikeH
   m_BlendParameterY: strikeV
   m_MinThreshold: 0
@@ -144,9 +112,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 1.8976657
+  m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.46140054
+  m_ExitTime: 0.75
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -223,7 +191,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3e08eb9cc19873c41bb31c02af1aafaf, type: 2}
+  m_Motion: {fileID: 7400000, guid: b08ac15b2d5d6374580ab14bc1e6207f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -381,7 +349,7 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: moveH
+  m_TimeParameter: 
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -510,18 +478,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -3986367155135379606}
     m_Position: {x: -230, y: -10, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -2393609946186999985}
-    m_Position: {x: -195, y: 55, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 8940623097362504218}
-    m_Position: {x: -160, y: 120, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -5258043950763704348}
-    m_Position: {x: -125, y: 185, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -1324131381229160245}
-    m_Position: {x: -90, y: 250, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 3806079915457322813}
@@ -570,7 +526,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 8268000663932358776, guid: 6a85988b40d745f4ca430c041e84a4ee, type: 3}
+    m_Motion: {fileID: 7400000, guid: 15f9eaa735ad7ef44b50b4fcd81fcec9, type: 2}
     m_Threshold: 0
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
@@ -675,9 +631,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 1.0817752
+  m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.22512858
+  m_ExitTime: 0.75
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -847,7 +803,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0
+  m_ExitTime: 0.75
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
