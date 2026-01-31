@@ -10,6 +10,8 @@ public class CharacterBehavior : MonoBehaviour
 
     public CharacterController controller;
 
+    public string forcedAct;
+
     private void Start()
     {
         CharAction[] children = actContainer.GetComponentsInChildren<CharAction>();
@@ -23,8 +25,16 @@ public class CharacterBehavior : MonoBehaviour
 
     public void Process(InputPackage input)
     {
-        string nextAct = curAct.GetNextAction(input);
-        if (nextAct != "")
+        string nextAct = "";
+        if (forcedAct != null)
+        {
+            nextAct = forcedAct;
+            forcedAct = null;
+        } else
+        {
+            nextAct = curAct.GetNextAction(input);
+        }
+        if (!string.IsNullOrWhiteSpace(nextAct))
         {
             CharAction next;
             bool found = acts.TryGetValue(nextAct, out next);

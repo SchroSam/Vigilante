@@ -68,6 +68,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DebugDie",
+                    "type": "Button",
+                    "id": "1ba829f4-c6ef-4013-bea8-b0351121238b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -288,6 +297,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "lHit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "afa5a4ab-7cde-47e2-ae5a-b647f80ff982",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugDie",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
