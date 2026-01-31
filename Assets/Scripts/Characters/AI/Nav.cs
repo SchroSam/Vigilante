@@ -9,6 +9,11 @@ public class Nav : MonoBehaviour
     public GameObject target;
     InputPackage nextInput;
     Vector3 movDir3;
+    public GameObject pusher;
+    bool pushed = false;
+
+    public float pushDist = 0.3f;
+    public float pushReduce = 2f;
 
     void Start()
     {
@@ -21,8 +26,10 @@ public class Nav : MonoBehaviour
     void Update()
     {
         //Debug.Log($"x:{m_Agent.steeringTarget.x} z:{m_Agent.steeringTarget.z}");
-        if(m_Agent.steeringTarget != null)
-            movDir3 = (m_Agent.steeringTarget - new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z)).normalized;
+        if(m_Agent.steeringTarget != null && !pushed)
+            movDir3 = (m_Agent.steeringTarget - new Vector3(transform.position.x, transform.position.y, transform.position.z)).normalized;
+        else if (pushed)
+            movDir3 = (transform.position - pusher.transform.position).normalized + m_Agent.steeringTarget.normalized * pushReduce;
 
         nextInput.movedir.x = movDir3.x;
         nextInput.movedir.y = movDir3.z;
@@ -32,5 +39,28 @@ public class Nav : MonoBehaviour
         behavior.Process(nextInput);
 
         m_Agent.destination = target.transform.position;
+
+        if(pushed && Vector3.Distance(transform.position, pusher.transform.position) > pushDist)
+        {
+            pushed = false;
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "Wall")
+        {
+            pusher = other.gameObject;
+            pushed = true;
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            pusher = collision.gameObject;
+            pushed = true;
+        }
     }
 }
