@@ -19,6 +19,7 @@ public class CharacterBehavior : MonoBehaviour
     public bool blocking;
     public bool attacking;
     public Vector2Int dir;
+    public List<Collider> objectsHit = new List<Collider>();
 
     private void Start()
     {

@@ -25,6 +25,7 @@ public class Attack : CharAction
     public override void Exit()
     {
         animator.SetBool("attack", false);
+        behavior.objectsHit.Clear();
     }
 
     public override void Process(InputPackage input)

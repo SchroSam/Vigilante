@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4026180931790783170}
   - component: {fileID: 7194346143256460566}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Block
   controller: {fileID: 0}
   animator: {fileID: 0}
+  behavior: {fileID: 0}
 --- !u!1 &162868353098154533
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,7 +56,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 12992977687522582}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ActionContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +97,7 @@ GameObject:
   - component: {fileID: 833138320103351645}
   - component: {fileID: 692552290720236591}
   - component: {fileID: 8304919998988554970}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,6 +244,9 @@ MonoBehaviour:
   animator: {fileID: 3498584789358405103}
   forcedAct: 
   maxHealth: 100
+  blocking: 0
+  attacking: 0
+  dir: {x: 0, y: 0}
 --- !u!1 &2348651775246269129
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5093228601104736317}
   - component: {fileID: 1822639713756629167}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,6 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Attack
   controller: {fileID: 0}
   animator: {fileID: 0}
+  behavior: {fileID: 0}
 --- !u!1 &2552710077338377429
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +306,7 @@ GameObject:
   - component: {fileID: 5804149899870479269}
   - component: {fileID: 7430925962269852600}
   - component: {fileID: 1058653037816964652}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,7 +416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5663736909605962567}
   - component: {fileID: 3677962975899504806}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Idle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,6 +452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IdleCharAction
   controller: {fileID: 0}
   animator: {fileID: 0}
+  behavior: {fileID: 0}
 --- !u!1 &5550893398077972236
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5469796814828159055}
   - component: {fileID: 397447534442019886}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,6 +499,133 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Move
   controller: {fileID: 0}
   animator: {fileID: 0}
+  behavior: {fileID: 0}
+  speed: 10
+--- !u!1 &5756132737599494869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2168318282885140544}
+  - component: {fileID: 3736415550574417273}
+  - component: {fileID: 4379221921166348394}
+  - component: {fileID: 8922346069371979876}
+  - component: {fileID: 3797410734227853241}
+  m_Layer: 9
+  m_Name: Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2168318282885140544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756132737599494869}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6364372781589294034}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3736415550574417273
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756132737599494869}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4379221921166348394
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756132737599494869}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 01ee16cd8c4d2d74ba909f2018fc9827, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8922346069371979876
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756132737599494869}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3797410734227853241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756132737599494869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805aa7e795f25004f8b6fb21842bdb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &6784035160796790880
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6364372781589294034}
   - component: {fileID: 3498584789358405103}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,6 +657,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3533992206497491946}
+  - {fileID: 2168318282885140544}
   m_Father: {fileID: 1987585277280131893}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3498584789358405103
@@ -558,7 +692,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8971791264156156542}
   - component: {fileID: 5024852224428483938}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Die
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,3 +728,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Die
   controller: {fileID: 0}
   animator: {fileID: 0}
+  behavior: {fileID: 0}
