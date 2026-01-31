@@ -19,4 +19,30 @@ public class Player : MonoBehaviour
         if (input.debugReset) behavior.Reset();
         behavior.Process(input);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Group")
+        {
+            foreach (Transform child in other.transform) 
+            { 
+                Debug.Log(child.gameObject.name);
+                child.GetComponent<Nav>().StateChange(Nav.E_State.Seek); 
+            }
+            
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Group")
+        {
+            foreach (Transform child in other.transform) 
+            { 
+                Debug.Log(child.gameObject.name);
+                child.GetComponent<Nav>().StateChange(Nav.E_State.Idle); 
+            }
+            
+        }
+    }
 }
