@@ -21,7 +21,8 @@ public class Nav : MonoBehaviour
     void Update()
     {
         //Debug.Log($"x:{m_Agent.steeringTarget.x} z:{m_Agent.steeringTarget.z}");
-        movDir3 = (m_Agent.steeringTarget - transform.position).normalized;
+        if(m_Agent.steeringTarget != null)
+            movDir3 = (m_Agent.steeringTarget - new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z)).normalized;
 
         nextInput.movedir.x = movDir3.x;
         nextInput.movedir.y = movDir3.z;
