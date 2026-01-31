@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CharAction : MonoBehaviour
 {
+    public CharacterController controller;
+
     public virtual string GetNextAction(InputPackage input)
     {
         return "";

@@ -8,6 +8,8 @@ public class CharacterBehavior : MonoBehaviour
     public GameObject actContainer;
     Dictionary<string, CharAction> acts = new Dictionary<string, CharAction>();
 
+    public CharacterController controller;
+
     private void Start()
     {
         print("start called");
@@ -15,6 +17,7 @@ public class CharacterBehavior : MonoBehaviour
         foreach (CharAction c in children)
         {
             acts.Add(c.gameObject.name, c);
+            c.controller = controller;
         }
         SwitchAction(defaultAct);
     }
