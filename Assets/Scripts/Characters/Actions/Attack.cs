@@ -23,6 +23,5 @@ public class Attack : CharAction
         animator.SetFloat("strikeV", input.strikedir.y);
         animator.SetFloat("strikeH", input.strikedir.x);
         //print(input.movedir);
-        print(input.strikedir);
     }
 }
