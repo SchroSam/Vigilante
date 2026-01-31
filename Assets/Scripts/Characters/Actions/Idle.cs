@@ -12,6 +12,6 @@ public class IdleCharAction : CharAction
     public override void Exit() { }
 
     public override void Process(InputPackage input) {
-        print("idle");
+        //print("idle");
     }
 }

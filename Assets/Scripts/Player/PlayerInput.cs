@@ -4,10 +4,13 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     InputAction move;
+    InputAction iHit, jHit, kHit, lHit;
+    InputAction block;
 
     private void Start()
     {
         move = InputSystem.actions.FindAction("Move");
+        block = InputSystem.actions.FindAction("Block");
     }
 
     public InputPackage GetInput()
@@ -20,6 +23,8 @@ public class PlayerInput : MonoBehaviour
         {
             package.action = "Idle";
         }
+        bool blocking = block.IsPressed();
+        print(blocking);
         return package;
     }
 }
