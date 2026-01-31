@@ -12,6 +12,9 @@ public class CharacterBehavior : MonoBehaviour
 
     public string forcedAct;
 
+    public int maxHealth = 100;
+    int health;
+
     private void Start()
     {
         CharAction[] children = actContainer.GetComponentsInChildren<CharAction>();
@@ -21,6 +24,20 @@ public class CharacterBehavior : MonoBehaviour
             c.controller = controller;
         }
         SwitchAction(defaultAct);
+        health = maxHealth;
+    }
+
+    public void TakeDamage(int dmg)
+    {
+        health -= dmg;
+        if (health <= 0)
+        {
+            health = 0;
+            forcedAct = "Die";
+        } else
+        {
+            forcedAct = "Hurt";
+        }
     }
 
     public void Process(InputPackage input)
