@@ -7,7 +7,9 @@ public class Hurt : CharAction
         return "Idle";
     }
 
-    public override void Enter() { }
+    public override void Enter() {
+        animator.SetTrigger("hurt");
+    }
     public override void Exit() { }
 
     public override void Process(InputPackage input) {

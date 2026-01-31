@@ -9,6 +9,7 @@ public class CharacterBehavior : MonoBehaviour
     Dictionary<string, CharAction> acts = new Dictionary<string, CharAction>();
 
     public CharacterController controller;
+    public Animator animator;
 
     public string forcedAct;
 
@@ -22,6 +23,7 @@ public class CharacterBehavior : MonoBehaviour
         {
             acts.Add(c.gameObject.name, c);
             c.controller = controller;
+            c.animator = animator;
         }
         SwitchAction(defaultAct);
         health = maxHealth;
