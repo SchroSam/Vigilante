@@ -4,7 +4,7 @@ public class IdleAction : CharAction
 {
     public override string GetNextAction(InputPackage input)
     {
-        if (input.action == "Idle") return "Idle";
+        if (input.action == "Move") return input.action;
         return "";
     }
 

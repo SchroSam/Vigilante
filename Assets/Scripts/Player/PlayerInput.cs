@@ -11,6 +11,10 @@ public class PlayerInput : MonoBehaviour
     {
         move = InputSystem.actions.FindAction("Move");
         attack = InputSystem.actions.FindAction("Attack");
+        iHit = InputSystem.actions.FindAction("iHit");
+        jHit = InputSystem.actions.FindAction("jHit");
+        kHit = InputSystem.actions.FindAction("kHit");
+        lHit = InputSystem.actions.FindAction("lHit");
     }
 
     public InputPackage GetInput()
@@ -23,8 +27,23 @@ public class PlayerInput : MonoBehaviour
         {
             package.action = "Idle";
         }
-        bool attacking = !attack.IsPressed();
-        print(attacking);
+        bool attacking = attack.IsPressed();
+        if (iHit.WasPressedThisFrame())
+        {
+            package.action = attacking ? "IAttack" : "IBlock";
+        }
+        else if (jHit.WasPressedThisFrame())
+        {
+            package.action = attacking ? "JAttack" : "JBlock";
+        }
+        else if (kHit.WasPressedThisFrame())
+        {
+            package.action = attacking ? "KAttack" : "KBlock";
+        }
+        else if (lHit.WasPressedThisFrame())
+        {
+            package.action = attacking ? "LAttack" : "LBlock";
+        }
         return package;
     }
 }
