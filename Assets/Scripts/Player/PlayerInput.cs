@@ -22,28 +22,34 @@ public class PlayerInput : MonoBehaviour
         InputPackage package = new InputPackage();
         package.movedir = move.ReadValue<Vector2>();
         if (package.movedir != Vector2.zero) {
+            print("moving");
             package.action = "Move";
         } else
         {
             package.action = "Idle";
         }
         bool attacking = attack.IsPressed();
-        if (iHit.WasPressedThisFrame())
+        if (iHit.IsPressed())
         {
-            package.action = attacking ? "IAttack" : "IBlock";
+            package.action = attacking ? "Attack" : "Block";
+            package.strikedir = Vector2Int.up;
         }
-        else if (jHit.WasPressedThisFrame())
+        else if (jHit.IsPressed())
         {
-            package.action = attacking ? "JAttack" : "JBlock";
+            package.action = attacking ? "Attack" : "Block";
+            package.strikedir = Vector2Int.left;
         }
-        else if (kHit.WasPressedThisFrame())
+        else if (kHit.IsPressed())
         {
-            package.action = attacking ? "KAttack" : "KBlock";
+            package.action = attacking ? "Attack" : "Block";
+            package.strikedir = Vector2Int.down;
         }
-        else if (lHit.WasPressedThisFrame())
+        else if (lHit.IsPressed())
         {
-            package.action = attacking ? "LAttack" : "LBlock";
+            package.action = attacking ? "Attack" : "Block";
+            package.strikedir = Vector2Int.right;
         }
+        //print(package.action);
         return package;
     }
 }

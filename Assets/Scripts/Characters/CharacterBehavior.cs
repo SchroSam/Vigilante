@@ -24,7 +24,8 @@ public class CharacterBehavior : MonoBehaviour
     public void Process(InputPackage input)
     {
         string nextAct = curAct.GetNextAction(input);
-        if (nextAct != "")
+        print(nextAct);
+        if (!string.IsNullOrWhiteSpace(nextAct))
         {
             CharAction next;
             bool found = acts.TryGetValue(nextAct, out next);
