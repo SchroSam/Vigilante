@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0c9def94f66c6ed44a98fcd7de18a3d3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 186919
+  packageName: Low Poly Orc Factory
+  packageVersion: 1.5.4
+  assetPath: Assets/LowPolyOrcFactory1.5/Assets/Controller/LowPolyOrc.controller
+  uploadId: 417377
