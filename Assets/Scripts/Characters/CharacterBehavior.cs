@@ -16,12 +16,17 @@ public class CharacterBehavior : MonoBehaviour
     public int maxHealth = 100;
     int health;
 
+    public bool blocking;
+    public bool attacking;
+    public Vector2Int dir;
+
     private void Start()
     {
         CharAction[] children = actContainer.GetComponentsInChildren<CharAction>();
         foreach (CharAction c in children)
         {
             acts.Add(c.gameObject.name, c);
+            c.behavior = this;
             c.controller = controller;
             c.animator = animator;
         }
@@ -34,6 +39,18 @@ public class CharacterBehavior : MonoBehaviour
         SwitchAction(defaultAct, new InputPackage());
         health = maxHealth;
         animator.Play("Idle");
+    }
+
+    public void HandleHit(HitInfo hit)
+    {
+        if (blocking && hit.dir == new Vector2Int(-hit.dir.x, hit.dir.y))
+        {
+            print("blocked");
+        } else
+        {
+            print("hit");
+            TakeDamage(hit.dmg);
+        }
     }
 
     public void TakeDamage(int dmg)
