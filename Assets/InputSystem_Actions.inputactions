@@ -77,6 +77,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DebugReset",
+                    "type": "Button",
+                    "id": "66cea3c2-4ba3-41df-9083-40231c998c17",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -308,6 +317,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "DebugDie",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "813ff114-6dbb-4802-9a7e-9429839870d8",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugReset",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

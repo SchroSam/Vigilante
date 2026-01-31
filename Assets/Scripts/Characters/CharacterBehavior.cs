@@ -29,6 +29,13 @@ public class CharacterBehavior : MonoBehaviour
         health = maxHealth;
     }
 
+    public void Reset()
+    {
+        SwitchAction(defaultAct, new InputPackage());
+        health = maxHealth;
+        animator.Play("Idle");
+    }
+
     public void TakeDamage(int dmg)
     {
         health -= dmg;

@@ -6,5 +6,5 @@ public struct InputPackage
     public Vector2Int strikedir;
     public string action;
 
-    public bool debugDie;
+    public bool debugDie, debugReset;
 }
