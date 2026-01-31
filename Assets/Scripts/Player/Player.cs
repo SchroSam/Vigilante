@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public CharacterBehavior model;
+    public CharacterBehavior behavior;
     public PlayerInput pinput;
     void FixedUpdate()
     {
         InputPackage input = pinput.GetInput();
-        model.Process(input);
+        behavior.Process(input);
     }
 }

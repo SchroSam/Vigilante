@@ -446,8 +446,8 @@ GameObject:
   - component: {fileID: 2069500963}
   - component: {fileID: 2069500962}
   - component: {fileID: 2069500969}
-  - component: {fileID: 2069500968}
   - component: {fileID: 2069500967}
+  - component: {fileID: 2069500970}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -587,18 +587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea37e27426096584cb91a89b1c2e2f5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
---- !u!114 &2069500968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2069500961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58f186e88ee5f1d46bb3986de3ecfa7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterModel
 --- !u!114 &2069500969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,8 +599,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0641c82e27701324aaf74ccf4afd9e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  model: {fileID: 2069500968}
+  behavior: {fileID: 2069500970}
   pinput: {fileID: 2069500967}
+--- !u!114 &2069500970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069500961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f186e88ee5f1d46bb3986de3ecfa7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterModel
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
