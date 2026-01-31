@@ -5,7 +5,7 @@ public class GroupManager : MonoBehaviour
 {
 
     public List<Nav> members;
-    Nav activeFighter;
+    public Nav activeFighter;
 
     void Start()
     {

@@ -19,9 +19,7 @@ public class Nav : MonoBehaviour
     bool pushed = false;
     public float pushDist = 0.3f;
     public float pushReduce = 2f;
-
-    bool engaging = false;
-    bool striking = false;
+    public bool striking = false;
     public float attackRange = 0.3f;
 
     
@@ -65,7 +63,11 @@ public class Nav : MonoBehaviour
         else if(state == E_State.Waiting)
         {
             //add propper waiting behavior
-            nextInput.action = "Block";
+
+            
+
+            nextInput.action = "Idle";
+            behavior.Process(nextInput);
 
         }
 
@@ -80,6 +82,11 @@ public class Nav : MonoBehaviour
                 else if (pushed)
                     movDir3 = (transform.position - pusher.transform.position).normalized + m_Agent.steeringTarget.normalized * pushReduce;
 
+                nextInput.movedir.x = movDir3.x;
+                nextInput.movedir.y = movDir3.z;
+
+                behavior.Process(nextInput);
+
                 if(pushed && Vector3.Distance(transform.position, pusher.transform.position) > pushDist)
                 {
                     pushed = false;
@@ -88,13 +95,84 @@ public class Nav : MonoBehaviour
 
             else if(Vector3.Distance(transform.position, player.transform.position) <= attackRange && !striking)
             {
+                striking = true;
+
+                nextInput.movedir = Vector2.zero;
                 nextInput.action = "Attack";
+
+                int attackType = Random.Range(0, 4);
+
+                switch (attackType)
+                {
+                    case 0:
+                        nextInput.strikedir = Vector2Int.left;
+
+                    break;
+
+                    case 1:
+                        nextInput.strikedir = Vector2Int.right;
+
+                    break;
+
+                    case 2:
+                        nextInput.strikedir = Vector2Int.up;
+
+                    break;
+
+                    case 3:
+                        nextInput.strikedir = Vector2Int.down;
+
+                    break;
+                }
+
+                behavior.Process(nextInput);
+                
                 
             }
 
+            // else if (striking)
+            // {
+                
+            // }
 
 
 
+
+        }
+    }
+
+    public void chanceToBlock()
+    {
+        if(Random.Range(0, 2) == 1)
+        {
+            nextInput.action = "Block";
+
+            int blockType = Random.Range(0, 4);
+
+            switch (blockType)
+            {
+                case 0:
+                    nextInput.strikedir = Vector2Int.left;
+
+                break;
+
+                case 1:
+                    nextInput.strikedir = Vector2Int.right;
+
+                break;
+
+                case 2:
+                    nextInput.strikedir = Vector2Int.up;
+
+                break;
+
+                case 3:
+                    nextInput.strikedir = Vector2Int.down;
+
+                break;
+            }
+
+            behavior.Process(nextInput);
         }
     }
 

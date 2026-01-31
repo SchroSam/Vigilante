@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     public PlayerInput pinput;
     InputPackage input;
     public Transform cam;
+    public GameObject currentGroup;
 
     private void Update()
     {
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
     {
         if(other.tag == "Group")
         {
+            currentGroup = other.gameObject;
             foreach (Transform child in other.transform) 
             { 
                 Debug.Log(child.gameObject.name);
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour
     {
         if(other.tag == "Group")
         {
+            currentGroup = null;
             foreach (Transform child in other.transform) 
             { 
                 Debug.Log(child.gameObject.name);

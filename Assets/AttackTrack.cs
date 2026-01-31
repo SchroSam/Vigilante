@@ -1,0 +1,38 @@
+using UnityEngine;
+
+public class AttackTrack : StateMachineBehaviour
+{
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if(animator.transform.parent.tag == "Player" && CameraBehavior.lockOn != null && !animator.transform.parent.GetComponent<Player>().currentGroup.GetComponent<GroupManager>().activeFighter.striking)
+        {
+            animator.transform.parent.GetComponent<Player>().currentGroup.GetComponent<GroupManager>().activeFighter.chanceToBlock();
+        }
+    }
+
+    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
+
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if(animator.transform.parent.tag == "Enemy")
+            animator.transform.parent.parent.GetComponent<GroupManager>().AssignAttacker();
+    }
+
+    // OnStateMove is called right after Animator.OnAnimatorMove()
+    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    // Implement code that processes and affects root motion
+    //}
+
+    // OnStateIK is called right after Animator.OnAnimatorIK()
+    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    // Implement code that sets up animation IK (inverse kinematics)
+    //}
+}
