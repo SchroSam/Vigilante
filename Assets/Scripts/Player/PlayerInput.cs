@@ -5,12 +5,12 @@ public class PlayerInput : MonoBehaviour
 {
     InputAction move;
     InputAction iHit, jHit, kHit, lHit;
-    InputAction block;
+    InputAction attack;
 
     private void Start()
     {
         move = InputSystem.actions.FindAction("Move");
-        block = InputSystem.actions.FindAction("Block");
+        attack = InputSystem.actions.FindAction("Attack");
     }
 
     public InputPackage GetInput()
@@ -23,8 +23,8 @@ public class PlayerInput : MonoBehaviour
         {
             package.action = "Idle";
         }
-        bool blocking = block.IsPressed();
-        print(blocking);
+        bool attacking = !attack.IsPressed();
+        print(attacking);
         return package;
     }
 }

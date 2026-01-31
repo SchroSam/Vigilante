@@ -25,7 +25,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Block",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "4cfab26e-962f-42cb-851d-c81c6195e358",
                     "expectedControlType": "",
@@ -207,7 +207,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Block",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
