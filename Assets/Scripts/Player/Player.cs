@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (input.debugDie) behavior.forcedAct = "Die";
         behavior.Process(input);
     }
 }

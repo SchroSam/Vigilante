@@ -7,6 +7,8 @@ public class PlayerInput : MonoBehaviour
     InputAction iHit, jHit, kHit, lHit;
     InputAction attack;
 
+    InputAction debugDie;
+
     private void Start()
     {
         move = InputSystem.actions.FindAction("Move");
@@ -15,6 +17,7 @@ public class PlayerInput : MonoBehaviour
         jHit = InputSystem.actions.FindAction("jHit");
         kHit = InputSystem.actions.FindAction("kHit");
         lHit = InputSystem.actions.FindAction("lHit");
+        debugDie = InputSystem.actions.FindAction("debugDie");
     }
 
     public InputPackage GetInput()
@@ -49,6 +52,7 @@ public class PlayerInput : MonoBehaviour
             package.action = attacking ? "Attack" : "Block";
             package.strikedir = Vector2Int.right;
         }
+        if (debugDie.IsPressed()) package.debugDie = true;
         //print(package.action);
         return package;
     }
