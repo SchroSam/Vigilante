@@ -55,6 +55,7 @@ public class CharacterBehavior : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
+        if (curAct == acts["Die"]) return;
         health -= dmg;
         if (health <= 0)
         {
