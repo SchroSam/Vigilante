@@ -4,7 +4,7 @@ public class Die : CharAction
 {
     public override string GetNextAction(InputPackage input)
     {
-        return "Idle";
+        return "";
     }
 
     public override void Enter(InputPackage input)

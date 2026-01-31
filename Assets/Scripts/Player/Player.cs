@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         input = pinput.GetInput();
-
     }
 
     void FixedUpdate()

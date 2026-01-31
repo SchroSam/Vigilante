@@ -70,6 +70,7 @@ public class CharacterBehavior : MonoBehaviour
     {
         if (curAct) curAct.Exit();
         curAct = nextAct;
+        print("switching to " + curAct.gameObject.name);
         curAct.Enter(input);
     }
 }

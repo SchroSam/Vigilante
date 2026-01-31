@@ -4,7 +4,7 @@ public class Attack : CharAction
 {
     public override string GetNextAction(InputPackage input)
     {
-        if (input.action != "Attack") return input.action;
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0)) return input.action;
         return "";
     }
 
