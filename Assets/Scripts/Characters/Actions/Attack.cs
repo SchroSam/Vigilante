@@ -6,7 +6,6 @@ public class Attack : CharAction
 
     public override string GetNextAction(InputPackage input)
     {
-        print(animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 * repeat && !animator.IsInTransition(0))
         {
             repeat += 1;
