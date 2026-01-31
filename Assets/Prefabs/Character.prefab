@@ -81,6 +81,7 @@ Transform:
   - {fileID: 4026180931790783170}
   - {fileID: 5093228601104736317}
   - {fileID: 8971791264156156542}
+  - {fileID: 399844857907114644}
   m_Father: {fileID: 1987585277280131893}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2000777975832662787
@@ -247,6 +248,7 @@ MonoBehaviour:
   blocking: 0
   attacking: 0
   dir: {x: 0, y: 0}
+  objectsHit: []
 --- !u!1 &2348651775246269129
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,6 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805aa7e795f25004f8b6fb21842bdb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  behavior: {fileID: 8304919998988554970}
 --- !u!1 &6784035160796790880
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,6 +729,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ad8ccb923b183468369c1fddc3e584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Die
+  controller: {fileID: 0}
+  animator: {fileID: 0}
+  behavior: {fileID: 0}
+--- !u!1 &8726211759704648367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 399844857907114644}
+  - component: {fileID: 8147119319061306724}
+  m_Layer: 7
+  m_Name: Hurt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &399844857907114644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8726211759704648367}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 12992977687522582}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8147119319061306724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8726211759704648367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f61564ff2675964ab5a804d78a20f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Hurt
   controller: {fileID: 0}
   animator: {fileID: 0}
   behavior: {fileID: 0}

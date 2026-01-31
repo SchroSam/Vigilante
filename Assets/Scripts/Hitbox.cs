@@ -6,10 +6,14 @@ public class Hitbox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other);
         if (!behavior.objectsHit.Contains(other))
         {
             behavior.objectsHit.Add(other);
+            CharacterBehavior oBeh = other.GetComponent<CharacterBehavior>();
+            HitInfo h = new HitInfo();
+            h.dir = behavior.dir;
+            h.dmg = 15;
+            oBeh.HandleHit(h);
         }
     }
 }
