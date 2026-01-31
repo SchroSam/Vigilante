@@ -2,9 +2,17 @@ using UnityEngine;
 
 public class Attack : CharAction
 {
+    int repeat = 1; //amount of times this action's animation has repeated, used for transitioning out when animation is done
+
     public override string GetNextAction(InputPackage input)
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0)) return input.action;
+        print(animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 * repeat && !animator.IsInTransition(0))
+        {
+            repeat += 1;
+            if (input.action != "Attack") repeat = 1;
+            return input.action;
+        }
         return "";
     }
 
