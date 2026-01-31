@@ -4,10 +4,16 @@ public class Player : MonoBehaviour
 {
     public CharacterBehavior behavior;
     public PlayerInput pinput;
+    InputPackage input;
+
+    private void Update()
+    {
+        input = pinput.GetInput();
+
+    }
 
     void FixedUpdate()
     {
-        InputPackage input = pinput.GetInput();
         behavior.Process(input);
     }
 }

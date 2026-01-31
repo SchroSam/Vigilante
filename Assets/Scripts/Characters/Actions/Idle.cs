@@ -4,7 +4,7 @@ public class IdleCharAction : CharAction
 {
     public override string GetNextAction(InputPackage input)
     {
-        if (input.action == "Move") return "Move";
+        if (input.action == "Idle") return input.action;
         return "";
     }
 
@@ -12,6 +12,6 @@ public class IdleCharAction : CharAction
     public override void Exit() { }
 
     public override void Process(InputPackage input) {
-        print("idle");
+        //print("idle");
     }
 }

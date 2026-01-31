@@ -12,7 +12,6 @@ public class CharacterBehavior : MonoBehaviour
 
     private void Start()
     {
-        print("start called");
         CharAction[] children = actContainer.GetComponentsInChildren<CharAction>();
         foreach (CharAction c in children)
         {
