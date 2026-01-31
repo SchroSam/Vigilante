@@ -4,6 +4,7 @@ public class CharAction : MonoBehaviour
 {
     public CharacterController controller;
     public Animator animator;
+    public CharacterBehavior behavior;
 
     public virtual string GetNextAction(InputPackage input)
     {
