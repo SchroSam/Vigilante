@@ -233,6 +233,11 @@ public class Nav : MonoBehaviour
         state = nextState;
     }
 
+    public void RemoveSelf()
+    {
+        group.RemoveMember(this);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if(other.name == "FightRadius")

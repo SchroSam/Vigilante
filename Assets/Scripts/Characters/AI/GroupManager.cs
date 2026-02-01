@@ -50,6 +50,11 @@ public class GroupManager : MonoBehaviour
         }
     }
 
+    public void RemoveMember(Nav member)
+    {
+        members.Remove(member);
+    }
+
     // Update is called once per frame
     void Update()
     {

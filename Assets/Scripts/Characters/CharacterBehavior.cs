@@ -103,6 +103,12 @@ public class CharacterBehavior : MonoBehaviour
             //Lose screen function here
             if(gameObject.tag == "Player")
                 FindFirstObjectByType<LoseUI>().LoseScreen();
+            //Enemy death here
+            else
+            {
+                GetComponent<Nav>().RemoveSelf();
+                Destroy(gameObject);
+            }
         } else
         {
             SetForcedAct("Hurt");
