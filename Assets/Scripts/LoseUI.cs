@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class LoseUI : MonoBehaviour
@@ -8,10 +10,25 @@ public class LoseUI : MonoBehaviour
     InputAction killTest;
     public GameObject Lose;
     public CharacterBehavior character;
+    public static LoseUI instance = null;
+    
+
+    bool co = false;
     
     public void Start()
     {
-        DontDestroyOnLoad(this);
+        if (instance == null)
+        {
+            instance = this;
+            SceneManager.activeSceneChanged += OnActiveSceneChanged;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
         killTest = InputSystem.actions.FindAction("Kill");
     }
 
@@ -24,19 +41,37 @@ public class LoseUI : MonoBehaviour
     }
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         Lose.SetActive(true);
         Time.timeScale = 0f;
+        
     }
 
 
     public void LoseScreen()
     {
-        StartCoroutine(Delay());
+        if(!co)
+        {
+            StartCoroutine(Delay());
+            co = true;
+        }
+       
     }
 
+    public void restartButton()
+    {
+        Debug.Log("Restart button pressed");
+        Time.timeScale = 1f;
+        Lose.SetActive(false);
+        
+        //GetComponent<CharacterBehavior>().Reset();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-    
+        co = false;
+    }
+
+    private void OnActiveSceneChanged(Scene current,Scene Next)
+    {
+        character = FindFirstObjectByType<PlayerInput>().GetComponent<CharacterBehavior>();
+    }
 }
-
-
