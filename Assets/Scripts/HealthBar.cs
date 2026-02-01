@@ -10,6 +10,7 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
+        behavior = FindFirstObjectByType<Player>().GetComponent<CharacterBehavior>();
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
         behavior.healthChanged.AddListener(UpdateHealthBar);
         size = mask.rectTransform.rect.width;
