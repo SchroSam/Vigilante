@@ -70,8 +70,9 @@ public class LoseUI : MonoBehaviour
         co = false;
     }
 
-    private void OnActiveSceneChanged(Scene current,Scene Next)
+    private void OnActiveSceneChanged(Scene current,Scene next)
     {
-        character = FindFirstObjectByType<PlayerInput>().GetComponent<CharacterBehavior>();
+        if(next.name != "MainMenu")
+            character = FindFirstObjectByType<PlayerInput>().GetComponent<CharacterBehavior>();
     }
 }

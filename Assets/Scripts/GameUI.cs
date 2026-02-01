@@ -41,8 +41,14 @@ public class GameUI : MonoBehaviour
         timerText.text = "Timer: " + ((int)timer / 60) + " : " + ((sec < 10) ? ("0" + sec) : sec.ToString());
     }
 
-    private void OnActiveSceneChanged(Scene current,Scene Next)
+    private void OnActiveSceneChanged(Scene current,Scene next)
     {
-        player = FindFirstObjectByType<PlayerInput>().gameObject;
+        if(next.name != "MainMenu")
+        {
+            GetComponent<Canvas>().enabled = true;
+            player = FindFirstObjectByType<PlayerInput>().gameObject;
+        }
+        else
+            GetComponent<Canvas>().enabled = false;
     }
 }

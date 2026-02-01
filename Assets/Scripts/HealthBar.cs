@@ -23,8 +23,11 @@ public class HealthBar : MonoBehaviour
 
     private void OnActiveSceneChanged(Scene current, Scene next)
     {
-        behavior = FindFirstObjectByType<Player>().GetComponent<CharacterBehavior>();
-        behavior.Reset();
-        UpdateHealthBar();
+        if(next.name != "MainMenu")
+        {
+            behavior = FindFirstObjectByType<Player>().GetComponent<CharacterBehavior>();
+            behavior.Reset();
+            UpdateHealthBar();
+        }
     }
 }
