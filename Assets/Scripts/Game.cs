@@ -12,7 +12,7 @@ public class Game : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        List<EnemyGroup> groups = new List<EnemyGroup>(groupsContainer.GetComponentsInChildren<EnemyGroup>(true));
+        List<GroupManager> groups = new List<GroupManager>(groupsContainer.GetComponentsInChildren<GroupManager>(true));
         for (int i = 3; i > 0 && i >= groups.Count; i--)
         {
             int chosen = Random.Range(0, groups.Count-1);

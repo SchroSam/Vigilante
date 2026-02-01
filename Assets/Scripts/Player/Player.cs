@@ -35,7 +35,8 @@ public class Player : MonoBehaviour
         {
             currentGroup = other.gameObject;
             foreach (Transform child in other.transform) 
-            { 
+            {
+                CameraBehavior.lockables.Add(child.transform);
                 Debug.Log(child.gameObject.name);
                 child.GetComponent<Nav>().StateChange(Nav.E_State.Seek); 
             }
@@ -49,7 +50,8 @@ public class Player : MonoBehaviour
         {
             currentGroup = null;
             foreach (Transform child in other.transform) 
-            { 
+            {
+                CameraBehavior.lockables.Remove(child.transform);
                 Debug.LogWarning(child.gameObject.name);
                 child.GetComponent<Nav>().StateChange(Nav.E_State.Idle); 
             }

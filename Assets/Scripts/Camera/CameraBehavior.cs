@@ -8,6 +8,8 @@ public class CameraBehavior : MonoBehaviour
     InputAction look, changeLockon, debugKill;
     public static Transform lockOn;
 
+    Vector3 desiredPosition;
+
     public float rotateSpeed = 180f;
 
     public static List<Transform> lockables = new List<Transform>();
@@ -22,7 +24,23 @@ public class CameraBehavior : MonoBehaviour
 
     void Update()
     {
-        if (lockOn == null)
+        desiredPosition = player.position;
+
+        if(player.GetComponent<Player>().currentGroup == null)
+        {
+            Vector2 l = look.ReadValue<Vector2>() * rotateSpeed;
+            float rotX = transform.localEulerAngles.y + l.x * Time.deltaTime;
+            float rotY = transform.localEulerAngles.x + l.y * Time.deltaTime;
+            if (rotY > 180f) rotY = Mathf.Clamp(rotY, 360f - 45f, 360f);
+            else rotY = Mathf.Clamp(rotY, -10f, 45f);
+            transform.rotation = Quaternion.Euler(rotY, rotX, 0f);
+
+            // Over-the-shoulder offset (adjust values to taste)
+            Vector3 shoulderOffset = transform.rotation * new Vector3(0.4f, 1.4f, -1.2f);
+            desiredPosition = player.position + shoulderOffset;
+        }
+
+        else if (lockOn == null)
         {
             if (lockables.Count > 0)
             {
@@ -32,9 +50,10 @@ public class CameraBehavior : MonoBehaviour
             Vector2 l = look.ReadValue<Vector2>() * rotateSpeed;
             float rotX = transform.localEulerAngles.y + l.x * Time.deltaTime;
             float rotY = transform.localEulerAngles.x + l.y * Time.deltaTime;
-            if (rotY > 180f) rotY = Mathf.Clamp(rotY, 360f - 80f, 360f);
-            else rotY = Mathf.Clamp(rotY, -1f, 80f);
+            if (rotY > 180f) rotY = Mathf.Clamp(rotY, 360f - 45f, 360f);
+            else rotY = Mathf.Clamp(rotY, -10f, 45f);
             transform.rotation = Quaternion.Euler(rotY, rotX, 0f);
+            desiredPosition = player.position + transform.rotation * new Vector3(0f, 1.4f, -1.2f);
         } else
         {
             if (changeLockon.WasPressedThisFrame())
@@ -50,7 +69,7 @@ public class CameraBehavior : MonoBehaviour
                 RemoveFromLockables(lockOn);
             }
         }
-        transform.position = player.position;
+        transform.position = desiredPosition;
     }
 
     public static void RemoveFromLockables(Transform t)

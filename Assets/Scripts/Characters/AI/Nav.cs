@@ -9,7 +9,7 @@ public class Nav : MonoBehaviour
     public enum E_State{Idle, Seek, Fight, Die, Waiting}
 
     NavMeshAgent m_Agent;
-    CharacterBehavior behavior;
+    public CharacterBehavior behavior;
     private GameObject player;
     InputPackage nextInput;
     Vector3 movDir3;

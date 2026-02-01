@@ -2,21 +2,23 @@ using UnityEngine;
 
 public class EnemyGroup : MonoBehaviour
 {
-    public CharacterBehavior[] enemies;
+    // DEPRECATED - MOVED TO GroupManager.cs
 
-    void Start()
-    {
-        enemies = GetComponentsInChildren<CharacterBehavior>(true);
-    }
+    // public CharacterBehavior[] enemies;
 
-    public void Spawn()
-    {
-        print("Spawning");
-        gameObject.SetActive(true);
-        foreach (CharacterBehavior e in enemies)
-        {
-            e.Reset();
-            CameraBehavior.lockables.Add(e.transform);
-        }
-    }
+    // void Start()
+    // {
+    //     enemies = GetComponentsInChildren<CharacterBehavior>(true);
+    // }
+
+    // public void Spawn()
+    // {
+    //     print("Spawning");
+    //     gameObject.SetActive(true);
+    //     foreach (CharacterBehavior e in enemies)
+    //     {
+    //         e.Reset();
+    //         CameraBehavior.lockables.Add(e.transform);
+    //     }
+    // }
 }

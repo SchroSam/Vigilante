@@ -7,6 +7,23 @@ public class GroupManager : MonoBehaviour
     public List<Nav> members;
     public Nav activeFighter;
 
+    //public CharacterBehavior[] enemies;
+
+    // void Start()
+    // {
+    //     enemies = GetComponentsInChildren<CharacterBehavior>(true);
+    // }
+
+    public void Spawn()
+    {
+        Debug.LogWarning("Spawning");
+        gameObject.SetActive(true);
+        foreach (Nav e in members)
+        {
+            e.behavior.Reset();
+        }
+    }
+
     void Start()
     {
         foreach (Transform child in transform) 
@@ -55,9 +72,4 @@ public class GroupManager : MonoBehaviour
         members.Remove(member);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

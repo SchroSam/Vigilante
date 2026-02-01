@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
@@ -11,6 +10,7 @@ public class LoseUI : MonoBehaviour
     public GameObject Lose;
     public CharacterBehavior character;
     public static LoseUI instance = null;
+    public float deathDelay = 1f;
     
 
     bool co = false;
@@ -32,16 +32,16 @@ public class LoseUI : MonoBehaviour
         killTest = InputSystem.actions.FindAction("Kill");
     }
 
-    void Update()
-    {
-        if (killTest.IsPressed())
-        {
-            character.TakeDamage(100);
-        }
-    }
+    // void Update()
+    // {
+    //     if (killTest.IsPressed())
+    //     {
+    //         character.TakeDamage(100);
+    //     }
+    // }
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(deathDelay);
         Lose.SetActive(true);
         Time.timeScale = 0f;
         

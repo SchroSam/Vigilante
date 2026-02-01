@@ -102,11 +102,16 @@ public class CharacterBehavior : MonoBehaviour
             forcedAct = "Die";
             //Lose screen function here
             if(gameObject.tag == "Player")
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 FindFirstObjectByType<LoseUI>().LoseScreen();
+            }
             //Enemy death here
             else
             {
-                GetComponent<Nav>().RemoveSelf();
+                GetComponent<Nav>().RemoveSelf(); // Remove from enemy group
+                CameraBehavior.RemoveFromLockables(transform); // Remove from lockon list
                 Destroy(gameObject);
             }
         } else

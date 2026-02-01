@@ -408,9 +408,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7263592254378191175}
   - {fileID: 8378883412700876795}
   - {fileID: 9066444869152576744}
+  - {fileID: 7263592254378191175}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1627878042023473205
@@ -427,6 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LoseUI
   Lose: {fileID: 6888211316811724359}
   character: {fileID: 0}
+  deathDelay: 1
 --- !u!1 &5249040235468667882
 GameObject:
   m_ObjectHideFlags: 0
