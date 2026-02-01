@@ -8,7 +8,8 @@ public class ChangeScene : MonoBehaviour
     public void Change()
     {
         Time.timeScale = 1f;
-        FindFirstObjectByType<PauseUI>().Unpause();
+        PauseUI pause = FindFirstObjectByType<PauseUI>();
+        if (pause != null) pause.Unpause();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         SceneManager.LoadScene(sceneName);
