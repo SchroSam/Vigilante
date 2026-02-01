@@ -95,7 +95,9 @@ public class CharacterBehavior : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
-            SetForcedAct("Die");
+            forcedAct = "Die";
+            //Lose screen function here
+            FindFirstObjectByType<LoseUI>().LoseScreen();
         } else
         {
             SetForcedAct("Hurt");
