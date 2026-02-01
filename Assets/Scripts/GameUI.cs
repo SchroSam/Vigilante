@@ -37,7 +37,7 @@ public class GameUI : MonoBehaviour
 
     public void UpdateTimer(float timer)
     {
-        int sec = ((int)timer % 60);
+        int sec = (int)timer % 60;
         timerText.text = "Timer: " + ((int)timer / 60) + " : " + ((sec < 10) ? ("0" + sec) : sec.ToString());
     }
 

@@ -5,13 +5,16 @@ public class Game : MonoBehaviour
 {
     public float timer = 180f;
     public GameObject groupsContainer;
-    List<CharacterBehavior> enemies = new List<CharacterBehavior>();
+    //List<CharacterBehavior> enemies = new List<CharacterBehavior>();
 
     public GameUI gameUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameUI = FindFirstObjectByType<GameUI>();
+        groupsContainer = GameObject.FindGameObjectWithTag("BossGroup");
+
         List<GroupManager> groups = new List<GroupManager>(groupsContainer.GetComponentsInChildren<GroupManager>(true));
         for (int i = 3; i > 0 && i >= groups.Count; i--)
         {
