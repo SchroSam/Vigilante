@@ -39,20 +39,23 @@ public class Nav : MonoBehaviour
     {
         if(state == E_State.Seek)
         {
-            //Debug.Log($"x:{m_Agent.steeringTarget.x} z:{m_Agent.steeringTarget.z}");
             if(m_Agent.steeringTarget != null && !pushed)
+            {
                 movDir3 = (m_Agent.steeringTarget - new Vector3(transform.position.x, transform.position.y, transform.position.z)).normalized;
+                movDir3 = -movDir3;
+            }
             else if (pushed)
                 movDir3 = (transform.position - pusher.transform.position).normalized + m_Agent.steeringTarget.normalized * pushReduce;
 
-            nextInput.movedir.x = movDir3.x;
-            nextInput.movedir.y = movDir3.z;
+            // nextInput.movedir.x = -movDir3.x;
+            // nextInput.movedir.y = -movDir3.z;
 
             nextInput.action = "Move";
 
             behavior.Process(nextInput);
 
             m_Agent.destination = player.transform.position;
+            transform.LookAt(player.transform);
 
             if(pushed && Vector3.Distance(transform.position, pusher.transform.position) > pushDist)
             {
@@ -79,15 +82,21 @@ public class Nav : MonoBehaviour
         {
             if(Vector3.Distance(transform.position, player.transform.position) > attackRange && !striking)
             {
+                transform.LookAt(player.transform);
+                Debug.LogWarning("Engaging player!");
+
                 nextInput.action = "Move";
 
                 if(m_Agent.steeringTarget != null && !pushed)
+                {
                     movDir3 = (m_Agent.steeringTarget - new Vector3(transform.position.x, transform.position.y, transform.position.z)).normalized;
+                    movDir3 = -movDir3;
+                }
                 else if (pushed)
                     movDir3 = (transform.position - pusher.transform.position).normalized + m_Agent.steeringTarget.normalized * pushReduce;
 
-                nextInput.movedir.x = movDir3.x;
-                nextInput.movedir.y = movDir3.z;
+                // nextInput.movedir.x = -movDir3.x;
+                // nextInput.movedir.y = -movDir3.z;
 
                 behavior.Process(nextInput);
 
@@ -99,6 +108,7 @@ public class Nav : MonoBehaviour
 
             else if(Vector3.Distance(transform.position, player.transform.position) <= attackRange && !striking)
             {
+                Debug.LogWarning("Making a swing!");
                 swing();   
             }
 

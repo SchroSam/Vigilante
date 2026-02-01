@@ -10,6 +10,8 @@ public class GameUI : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         pause = InputSystem.actions.FindAction("Pause");
     }
 
@@ -21,6 +23,8 @@ public class GameUI : MonoBehaviour
 
     public void Pause()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 0f;
         pauseUI.SetActive(true);
         gameObject.SetActive(false);

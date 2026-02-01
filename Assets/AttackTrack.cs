@@ -21,7 +21,10 @@ public class AttackTrack : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(animator.transform.parent.tag == "Enemy")
+        {
+            animator.transform.parent.GetComponent<Nav>().striking = false;
             animator.transform.parent.parent.GetComponent<GroupManager>().AssignAttacker();
+        }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
