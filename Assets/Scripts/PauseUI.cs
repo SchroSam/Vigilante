@@ -19,6 +19,8 @@ public class PauseUI : MonoBehaviour
 
     public void Unpause()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         Time.timeScale = 1f;
         game.SetActive(true);
         gameObject.SetActive(false);

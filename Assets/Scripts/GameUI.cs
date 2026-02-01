@@ -8,19 +8,26 @@ public class GameUI : MonoBehaviour
     public GameObject pauseUI;
     InputAction pause;
 
+    private GameObject player;
+
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         pause = InputSystem.actions.FindAction("Pause");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (pause.WasPressedThisFrame()) Pause();
+        if (pause.WasPressedThisFrame() && player.GetComponent<CharacterBehavior>().health > 0) Pause();
     }
 
     public void Pause()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 0f;
         pauseUI.SetActive(true);
         gameObject.SetActive(false);

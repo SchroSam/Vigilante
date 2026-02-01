@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class CharacterBehavior : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class CharacterBehavior : MonoBehaviour
     bool hasForcedAct = false;
 
     public int maxHealth = 100;
-    int health;
+    public int health;
+
+    public UnityEvent damageTaken = new UnityEvent();
 
     public bool blocking;
     public Vector2Int dir;
@@ -83,6 +86,7 @@ public class CharacterBehavior : MonoBehaviour
         {
             print("hit");
             TakeDamage(hit.dmg);
+            damageTaken.Invoke();
         }
     }
 
@@ -102,6 +106,19 @@ public class CharacterBehavior : MonoBehaviour
                 FindFirstObjectByType<LoseUI>().LoseScreen();
             }
                 
+            if(gameObject.tag == "Player")
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                FindFirstObjectByType<LoseUI>().LoseScreen();
+            }
+            //Enemy death here
+            else
+            {
+                GetComponent<Nav>().RemoveSelf(); // Remove from enemy group
+                CameraBehavior.RemoveFromLockables(transform); // Remove from lockon list
+                Destroy(gameObject);
+            }
         } else
         {
             SetForcedAct("Hurt");
