@@ -15,6 +15,7 @@ public class EnemyGroup : MonoBehaviour
         gameObject.SetActive(true);
         foreach (CharacterBehavior e in enemies)
         {
+            e.Reset();
             CameraBehavior.lockables.Add(e.transform);
         }
     }
