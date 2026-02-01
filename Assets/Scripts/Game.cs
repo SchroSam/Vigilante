@@ -5,7 +5,7 @@ public class Game : MonoBehaviour
 {
     public float timer = 180f;
     public GameObject groupsContainer;
-    List<CharacterBehavior> enemies = new List<CharacterBehavior>();
+    //List<CharacterBehavior> enemies = new List<CharacterBehavior>();
 
     public GameUI gameUI;
 

@@ -11,6 +11,8 @@ public class ChangeScene : MonoBehaviour
         FindFirstObjectByType<PauseUI>().Unpause();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        GameObject.Find("Win").SetActive(false);
+        
         SceneManager.LoadScene(sceneName);
     }
 }
