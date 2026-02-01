@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameUI : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameUI : MonoBehaviour
 
     private void Start()
     {
+        SceneManager.activeSceneChanged += OnActiveSceneChanged;
         player = GameObject.FindGameObjectWithTag("Player");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -37,5 +39,10 @@ public class GameUI : MonoBehaviour
     {
         int sec = ((int)timer % 60);
         timerText.text = "Timer: " + ((int)timer / 60) + " : " + ((sec < 10) ? ("0" + sec) : sec.ToString());
+    }
+
+    private void OnActiveSceneChanged(Scene current,Scene Next)
+    {
+        player = FindFirstObjectByType<PlayerInput>().gameObject;
     }
 }

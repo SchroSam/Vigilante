@@ -87,6 +87,7 @@ public class CharacterBehavior : MonoBehaviour
             print("hit");
             TakeDamage(hit.dmg);
             damageTaken.Invoke();
+            FindFirstObjectByType<HealthBar>().UpdateHealthBar();
         }
     }
 
@@ -101,11 +102,6 @@ public class CharacterBehavior : MonoBehaviour
             health = 0;
             forcedAct = "Die";
             //Lose screen function here
-            if (gameObject.tag == "Player")
-            {
-                FindFirstObjectByType<LoseUI>().LoseScreen();
-            }
-                
             if(gameObject.tag == "Player")
             {
                 Cursor.lockState = CursorLockMode.None;
