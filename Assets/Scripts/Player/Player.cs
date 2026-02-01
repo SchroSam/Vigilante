@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         if (input.debugDie) behavior.forcedAct = "Die";
         if (input.debugReset) behavior.Reset();
         behavior.Process(input);
-        transform.position = new Vector3(transform.position.x, startY, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, startY, transform.position.z);
     }
 
     void OnTriggerEnter(Collider other)

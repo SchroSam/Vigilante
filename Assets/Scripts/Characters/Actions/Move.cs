@@ -3,6 +3,7 @@ using UnityEngine;
 public class Move : CharAction
 {
     public float speed = 10f;
+    public float groundSnapDistance = 10f;
 
     public override string GetNextAction(InputPackage input)
     {
@@ -24,5 +25,13 @@ public class Move : CharAction
         controller.Move(((transform.forward * input.movedir.y) + (transform.right * input.movedir.x)) * speed * Time.fixedDeltaTime);
         animator.SetFloat("moveV", input.movedir.y);
         animator.SetFloat("moveH", input.movedir.x);
+
+        // Raycast to snap to ground directly below
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, groundSnapDistance))
+        {
+            Vector3 snapPosition = hit.point;
+            controller.Move(snapPosition - transform.position);
+        }
     }
 }
