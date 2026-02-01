@@ -11,7 +11,7 @@ public class HealthBar : MonoBehaviour
     private void Start()
     {
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
-        behavior.damageTaken.AddListener(UpdateHealthBar);
+        behavior.healthChanged.AddListener(UpdateHealthBar);
         size = mask.rectTransform.rect.width;
     }
 
