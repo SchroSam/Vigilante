@@ -185,6 +185,8 @@ public class Nav : MonoBehaviour
 
     public void StateChange(E_State nextState)
     {
+        Debug.LogWarning($"Changing from {state}, to {nextState}");
+
         if(state == E_State.Seek)
         {
             movDir3 = Vector3.zero;
@@ -201,6 +203,7 @@ public class Nav : MonoBehaviour
     {
         if(other.name == "FightRadius")
         {
+            Debug.LogWarning($"Entered FightRadius");
             group.AssignAttacker();
         }
     }
