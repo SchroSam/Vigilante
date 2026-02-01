@@ -18,7 +18,7 @@ public class CharacterBehavior : MonoBehaviour
     public int maxHealth = 100;
     public int health;
 
-    public UnityEvent damageTaken = new UnityEvent();
+    public UnityEvent healthChanged = new UnityEvent();
 
     public bool blocking;
     public Vector2Int dir;
@@ -71,6 +71,7 @@ public class CharacterBehavior : MonoBehaviour
         curAct = defaultAct;
         defaultAct.Enter(new InputPackage());
         health = maxHealth;
+        healthChanged.Invoke();
         animator.Play("Idle");
     }
 
@@ -86,7 +87,8 @@ public class CharacterBehavior : MonoBehaviour
         {
             print("hit");
             TakeDamage(hit.dmg);
-            damageTaken.Invoke();
+            healthChanged.Invoke();
+            FindFirstObjectByType<HealthBar>().UpdateHealthBar();
         }
     }
 
@@ -101,11 +103,6 @@ public class CharacterBehavior : MonoBehaviour
             health = 0;
             forcedAct = "Die";
             //Lose screen function here
-            if (gameObject.tag == "Player")
-            {
-                FindFirstObjectByType<LoseUI>().LoseScreen();
-            }
-                
             if(gameObject.tag == "Player")
             {
                 Cursor.lockState = CursorLockMode.None;
@@ -123,6 +120,14 @@ public class CharacterBehavior : MonoBehaviour
         {
             SetForcedAct("Hurt");
         }
+    }
+
+    public void Heal(int amount)
+    {
+        if (health >= maxHealth) return;
+        health += amount;
+        if (health > maxHealth) health = maxHealth;
+        healthChanged.Invoke();
     }
 
     public void SetForcedAct(string act)

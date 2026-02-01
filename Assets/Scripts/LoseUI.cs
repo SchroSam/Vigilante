@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LoseUI : MonoBehaviour
 {
-    InputAction killTest;
+    //InputAction killTest;
     public GameObject Lose;
     public CharacterBehavior character;
     public static LoseUI instance = null;
@@ -29,7 +29,7 @@ public class LoseUI : MonoBehaviour
             return;
         }
         
-        killTest = InputSystem.actions.FindAction("Kill");
+        //killTest = InputSystem.actions.FindAction("Kill");
     }
 
     // void Update()
@@ -70,8 +70,9 @@ public class LoseUI : MonoBehaviour
         co = false;
     }
 
-    private void OnActiveSceneChanged(Scene current,Scene Next)
+    private void OnActiveSceneChanged(Scene current,Scene next)
     {
-        character = FindFirstObjectByType<PlayerInput>().GetComponent<CharacterBehavior>();
+        if(next.name != "MainMenu")
+            character = FindFirstObjectByType<PlayerInput>().GetComponent<CharacterBehavior>();
     }
 }

@@ -70,6 +70,12 @@ public class GroupManager : MonoBehaviour
     public void RemoveMember(Nav member)
     {
         members.Remove(member);
+
+        if(FindFirstObjectByType<Nav>() == null)
+        {
+            Time.timeScale = 0f;
+            GameObject.Find("Win").SetActive(true);
+        }
     }
 
 }
