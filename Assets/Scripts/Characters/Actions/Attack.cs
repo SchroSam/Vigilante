@@ -3,6 +3,7 @@ using UnityEngine;
 public class Attack : CharAction
 {
     int repeat = 1; //amount of times this action's animation has repeated, used for transitioning out when animation is done
+    public Hitbox hitbox;
 
     public override string GetNextAction(InputPackage input)
     {
@@ -20,12 +21,14 @@ public class Attack : CharAction
         animator.SetBool("attack", true);
         animator.SetFloat("strikeV", input.strikedir.y);
         animator.SetFloat("strikeH", input.strikedir.x);
-
+        behavior.dir = input.strikedir;
     }
+
     public override void Exit()
     {
         animator.SetBool("attack", false);
-        behavior.objectsHit.Clear();
+        behavior.ClearObjectsHit();
+        hitbox.canHit = false;
     }
 
     public override void Process(InputPackage input)
