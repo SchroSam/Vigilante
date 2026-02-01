@@ -8,6 +8,13 @@ public class Player : MonoBehaviour
     public Transform cam;
     public GameObject currentGroup;
 
+    public float startY = 0.39f;
+
+    void Start()
+    {
+        startY = transform.position.y;
+    }
+
     private void Update()
     {
         input = pinput.GetInput();
@@ -19,6 +26,7 @@ public class Player : MonoBehaviour
         if (input.debugDie) behavior.forcedAct = "Die";
         if (input.debugReset) behavior.Reset();
         behavior.Process(input);
+        transform.position = new Vector3(transform.position.x, startY, transform.position.z);
     }
 
     void OnTriggerEnter(Collider other)
@@ -42,7 +50,7 @@ public class Player : MonoBehaviour
             currentGroup = null;
             foreach (Transform child in other.transform) 
             { 
-                Debug.Log(child.gameObject.name);
+                Debug.LogWarning(child.gameObject.name);
                 child.GetComponent<Nav>().StateChange(Nav.E_State.Idle); 
             }
             

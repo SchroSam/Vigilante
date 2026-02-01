@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -37,18 +38,26 @@ public class Nav : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(state == E_State.Seek)
+        if(state == E_State.Idle)
+        {
+            behavior.SetForcedAct("Idle");
+            nextInput.action = "Idle";
+            behavior.Process(nextInput);
+        }
+
+        else if(state == E_State.Seek)
         {
             if(m_Agent.steeringTarget != null && !pushed)
             {
                 movDir3 = (m_Agent.steeringTarget - new Vector3(transform.position.x, transform.position.y, transform.position.z)).normalized;
-                movDir3 = -movDir3;
+                // movDir3.x = -movDir3.x;
+                // movDir3.z = -movDir3.z;
             }
             else if (pushed)
                 movDir3 = (transform.position - pusher.transform.position).normalized + m_Agent.steeringTarget.normalized * pushReduce;
 
-            // nextInput.movedir.x = -movDir3.x;
-            // nextInput.movedir.y = -movDir3.z;
+            nextInput.movedir.x = -movDir3.x;
+            nextInput.movedir.y = -movDir3.z;
 
             nextInput.action = "Move";
 
@@ -83,20 +92,21 @@ public class Nav : MonoBehaviour
             if(Vector3.Distance(transform.position, player.transform.position) > attackRange && !striking)
             {
                 transform.LookAt(player.transform);
-                Debug.LogWarning("Engaging player!");
+                //Debug.LogWarning("Engaging player!");
 
                 nextInput.action = "Move";
 
                 if(m_Agent.steeringTarget != null && !pushed)
                 {
                     movDir3 = (m_Agent.steeringTarget - new Vector3(transform.position.x, transform.position.y, transform.position.z)).normalized;
-                    movDir3 = -movDir3;
+                    // movDir3.x = -movDir3.x;
+                    // movDir3.z = -movDir3.z;
                 }
                 else if (pushed)
                     movDir3 = (transform.position - pusher.transform.position).normalized + m_Agent.steeringTarget.normalized * pushReduce;
 
-                // nextInput.movedir.x = -movDir3.x;
-                // nextInput.movedir.y = -movDir3.z;
+                nextInput.movedir.x = -movDir3.x;
+                nextInput.movedir.y = -movDir3.z;
 
                 behavior.Process(nextInput);
 
@@ -108,16 +118,30 @@ public class Nav : MonoBehaviour
 
             else if(Vector3.Distance(transform.position, player.transform.position) <= attackRange && !striking)
             {
-                Debug.LogWarning("Making a swing!");
-                swing();   
+                //Debug.LogWarning("Making a swing!");
+                swing();
+
+                //Fight Radius check
+                if(Vector3.Distance(transform.position, player.transform.position) <= 4.14f)
+                {
+                    
+                    group.AssignAttacker();
+                }
+                else
+                {
+                    foreach(Nav member in group.members)
+                    {
+                        member.state = E_State.Seek;
+                    }
+                }
+
+                striking = false;
             }
 
             // else if (striking)
             // {
                 
             // }
-
-
 
 
         }
@@ -195,7 +219,7 @@ public class Nav : MonoBehaviour
 
     public void StateChange(E_State nextState)
     {
-        Debug.LogWarning($"Changing from {state}, to {nextState}");
+        //Debug.LogWarning($"Changing from {state}, to {nextState}");
 
         if(state == E_State.Seek)
         {
@@ -213,7 +237,7 @@ public class Nav : MonoBehaviour
     {
         if(other.name == "FightRadius")
         {
-            Debug.LogWarning($"Entered FightRadius");
+            //Debug.LogWarning($"Entered FightRadius");
             group.AssignAttacker();
         }
     }
